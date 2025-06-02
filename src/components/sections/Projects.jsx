@@ -105,6 +105,16 @@ const Projects = () => {
         </Desc>
 
        
+
+        <CardContainer>
+          {toggle === "all" &&
+            projects.map((project) => <ProjectCard project={project} />)}
+          {projects
+            .filter((item) => item.category === toggle)
+            .map((project) => (
+              <ProjectCard project={project} />
+            ))}
+        </CardContainer>
       </Wrapper>
     </Container>
   );
