@@ -5,60 +5,36 @@ import styled from "styled-components";
 const Top = styled.div`
   width: 100%;
   display: flex;
-  max-width: 100%;
   gap: 12px;
 `;
+
 const Image = styled.img`
   height: 50px;
+  width: 50px;
   border-radius: 10px;
+  object-fit: cover;
   margin-top: 4px;
   @media only screen and (max-width: 768px) {
     height: 40px;
+    width: 40px;
   }
 `;
+
 const Body = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
 `;
+
 const School = styled.div`
   font-size: 18px;
-  font-weight: 600px;
+  font-weight: 600;
   color: ${({ theme }) => theme.text_primary + 99};
   @media only screen and (max-width: 768px) {
     font-size: 14px;
   }
 `;
+
 const Degree = styled.div`
-  font-size: 14px;
-  font-weight: 500px;
-  color: ${({ theme }) => theme.text_secondary + 99};
-  @media only screen and (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
-const Date = styled.div`
-  font-size: 12px;
-  font-weight: 400px;
-  color: ${({ theme }) => theme.text_secondary + 80};
-
-  @media only screen and (max-width: 768px) {
-    font-size: 10px;
-  }
-`;
-
-const Description = styled.div`
-  width: 100%;
-  font-size: 15px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_primary + 99};
-  margin-bottom: 10px;
-  @media only screen and (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
-
-const Grade = styled.div`
   font-size: 14px;
   font-weight: 500;
   color: ${({ theme }) => theme.text_secondary + 99};
@@ -66,9 +42,34 @@ const Grade = styled.div`
     font-size: 12px;
   }
 `;
-const Span = styled.div`
-  display: -webkit-box;
-  max-width: 100%;
+
+const Date = styled.div`
+  font-size: 12px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_secondary + 80};
+  @media only screen and (max-width: 768px) {
+    font-size: 10px;
+  }
+`;
+
+const Grade = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.text_secondary + 99};
+  margin-top: 8px;
+  @media only screen and (max-width: 768px) {
+    font-size: 12px;
+  }
+`;
+
+const Description = styled.div`
+  font-size: 15px;
+  font-weight: 400;
+  color: ${({ theme }) => theme.text_primary + 99};
+  margin-top: 10px;
+  @media only screen and (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const EducationCard = ({ education }) => {
@@ -76,11 +77,14 @@ const EducationCard = ({ education }) => {
     <VerticalTimelineElement
       icon={
         <img
-          width="100%"
-          height="100%"
-          alt={education?.school}
-          style={{ borderRadius: "50%", objectFit: "cover" }}
           src={education?.img}
+          alt={`${education?.school} logo`}
+          style={{
+            borderRadius: "50%",
+            objectFit: "cover",
+            width: "100%",
+            height: "100%",
+          }}
         />
       }
       contentStyle={{
@@ -95,7 +99,7 @@ const EducationCard = ({ education }) => {
         borderRadius: "6px",
       }}
       contentArrowStyle={{
-        borderRight: "7px solid  rgba(255, 255, 255, 0.3)",
+        borderRight: "7px solid rgba(255, 255, 255, 0.3)",
       }}
       date={education?.date}
     >
@@ -107,13 +111,16 @@ const EducationCard = ({ education }) => {
           <Date>{education?.date}</Date>
         </Body>
       </Top>
-      <Grade>
-        <b>Grade : </b>
-        {education?.grade}
-      </Grade>
-      <Description>
-        {education?.desc && <Span>{education.desc}</Span>}
-      </Description>
+
+      {education?.grade && (
+        <Grade>
+          <b>Grade:</b> {education.grade}
+        </Grade>
+      )}
+
+      {education?.desc && (
+        <Description>{education.desc}</Description>
+      )}
     </VerticalTimelineElement>
   );
 };

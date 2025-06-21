@@ -8,9 +8,9 @@ import ExperienceCard from "../cards/ExperienceCard";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-contnet: center;
+  justify-content: center;
   margin-top: 50px;
-  position: rlative;
+  position: relative;
   z-index: 1;
   align-items: center;
 `;
@@ -18,31 +18,33 @@ const Container = styled.div`
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 1100px;
   gap: 12px;
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
+  padding: 0 16px;
 `;
-const Title = styled.div`
+
+const Header = styled.div`
+  text-align: center;
+  margin-bottom: 40px;
+`;
+
+const Title = styled.h2`
   font-size: 52px;
-  text-align: center;
   font-weight: 600;
-  margin-top: 20px;
   color: ${({ theme }) => theme.text_primary};
+  margin: 20px 0;
   @media (max-width: 768px) {
-    margin-top: 12px;
     font-size: 32px;
+    margin-top: 12px;
   }
 `;
-const Desc = styled.div`
+
+const Desc = styled.p`
   font-size: 18px;
-  text-align: center;
-  font-weight: 600;
+  font-weight: 500;
   color: ${({ theme }) => theme.text_secondary};
   @media (max-width: 768px) {
     font-size: 16px;
@@ -53,14 +55,12 @@ const Experience = () => {
   return (
     <Container id="Experience">
       <Wrapper>
-        <Title>Experience</Title>
-        <Desc
-          style={{
-            marginBottom: "40px",
-          }}
-        >
-     Aspiring Software Engineer with experience in internships and real-world projects
-        </Desc>
+        <Header>
+          <Title>Experience</Title>
+          <Desc>
+            Aspiring Software Engineer with experience in internships and real-world projects
+          </Desc>
+        </Header>
 
         <VerticalTimeline>
           {experiences.map((experience, index) => (

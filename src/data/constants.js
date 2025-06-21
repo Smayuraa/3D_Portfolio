@@ -9,7 +9,7 @@ export const Bio = {
     "I am a motivated and versatile individual, always eager to take on new challenges. With a passion for learning I am dedicated to delivering high-quality results. With a positive attitude and a growth mindset, I am ready to make a meaningful contribution and achieve great things.",
   github: "https://github.com/Smayuraa",
   resume:
-    "https://drive.google.com/file/d/1txFKZD3LNIXMc329jD9c995AU8LItOXK/view?usp=drive_link",
+    "https://drive.google.com/file/d/1WLG0Ze6zvBJLUSk8BgRTYHMOUTfkrn42/view?usp=sharing",
   linkedin: "https://www.linkedin.com/in/sharma-mayuri/",
   twitter: "https://twitter.com/RishavChanda",
   insta: "https://www.instagram.com/mayuraa.vines/",
@@ -169,6 +169,26 @@ export const experiences = [
     doc: "https://drive.google.com/file/d/1BBatn65f-wdhwkaoOEW0Rpul6xH-PXSH/view?usp=sharing",
   },
   
+  {
+    id: 2,
+    img: "https://osumare.com/wp-content/uploads/2024/01/osumare-logo-01-scaled.jpg",
+    role: "Full Stack Developer Intern ",
+    company: "Osumare Marketing Solution",
+    date: "June 2025 - Ongoing",
+    desc: "Working on a real estate web app using the MERN stack. Handling both frontend and backend development, including user authentication and property listing features.",
+    skills: [
+    "JavaScript",
+      "React.js",
+      "Node.js",
+      "Express.js",
+      "REST APIs",
+      "Git",
+      "MongoDB",
+      "Docker"
+    ],
+    doc: "https://drive.google.com/file/d/1KsiifKDXO0kDhsaYYEL4UOGfLjHsdxT5/view?usp=sharing",
+  },
+  
   
 
 ];
@@ -236,7 +256,7 @@ export const projects = [
     date: "Apr 2025 - May 2025",
     description:
       "A full-stack personal agency website where users can explore podcast services, sign up, and interact with content. Includes Google and JWT-based authentication and a fully responsive design using React. Built using agile methodologies.",
-    image: "{lneimg}", // Replace with your actual image variable
+    image:lneimg, 
     tags: ["React Js", "MongoDB", "Node Js", "Express Js", "Redux"],
     category: "web app",
     github: "https://github.com/Smayuraa/LNE.git",
@@ -274,8 +294,8 @@ export const projects = [
       "NodeMailer",
     ],
     category: "web app",
-    github: "https://", 
-    webapp: "https://", 
+    github: "https://github.com/Smayuraa/Gamified_Coding_Platform.git", 
+    webapp: "https://drive.google.com/drive/folders/1z5-EDEj30gGs01v_Xqkk85aKEHyJyn_p?usp=sharing", 
      member: [
       {
         name: "Mayuri Sharma",

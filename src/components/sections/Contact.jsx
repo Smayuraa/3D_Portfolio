@@ -5,8 +5,8 @@ import emailjs from "@emailjs/browser";
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-contnet: center;
-  position: rlative;
+  justify-content: center;
+  position: relative;
   z-index: 1;
   align-items: center;
 `;
@@ -14,16 +14,14 @@ const Container = styled.div`
 const Wrapper = styled.div`
   position: relative;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   max-width: 1100px;
   gap: 12px;
-  @media (max-width: 960px) {
-    flex-direction: column;
-  }
+  padding: 0 16px;
 `;
+
 const Title = styled.div`
   font-size: 52px;
   text-align: center;
@@ -35,17 +33,19 @@ const Title = styled.div`
     font-size: 32px;
   }
 `;
+
 const Desc = styled.div`
   font-size: 18px;
   text-align: center;
   font-weight: 600;
   color: ${({ theme }) => theme.text_secondary};
+  margin-bottom: 40px;
   @media (max-width: 768px) {
     font-size: 16px;
   }
 `;
 
-const ContactForm = styled.div`
+const ContactForm = styled.form`
   width: 95%;
   max-width: 600px;
   display: flex;
@@ -55,58 +55,73 @@ const ContactForm = styled.div`
   padding: 32px;
   border-radius: 12px;
   box-shadow: rgba(23, 92, 230, 0.1) 0px 4px 24px;
-  margin-top: 28px;
-  gap: 12px;
+  gap: 16px;
 `;
+
 const ContactTitle = styled.div`
   font-size: 28px;
-  margin-bottom: 6px;
   font-weight: 600;
   color: ${({ theme }) => theme.text_primary};
 `;
+
 const ContactInput = styled.input`
-  flex: 1;
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.text_secondary + 50};
   outline: none;
-  font-size: 18px;
+  font-size: 16px;
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;
   padding: 12px 16px;
+  transition: border 0.3s ease;
+
   &:focus {
-    border: 1px solid ${({ theme }) => theme.primary};
+    border-color: ${({ theme }) => theme.primary};
   }
 `;
+
 const ContactInputMessage = styled.textarea`
-  flex: 1;
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.text_secondary + 50};
   outline: none;
-  font-size: 18px;
+  font-size: 16px;
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;
   padding: 12px 16px;
+  resize: none;
+  transition: border 0.3s ease;
+
   &:focus {
-    border: 1px solid ${({ theme }) => theme.primary};
+    border-color: ${({ theme }) => theme.primary};
   }
 `;
+
 const ContactButton = styled.input`
-  width: 100%;
-  text-decoration: none;
-  text-align: center;
-  background: hsla(271, 100%, 50%, 1);
-  padding: 13px 16px;
-  margin-top: 2px;
-  border-radius: 12px;
+  width: fit-content;
+  align-self: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 12px 28px;
+  border-radius: 30px;
   border: none;
-  color: ${({ theme }) => theme.text_primary};
-  font-size: 18px;
+  color: white;
+  font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
 `;
 
 const Contact = () => {
   const form = useRef();
-  const handelSubmit = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     emailjs
       .sendForm(
@@ -116,32 +131,34 @@ const Contact = () => {
         "iiezipst56oASjSUK"
       )
       .then(
-        (result) => {
-          alert("Message Sent");
-          form.current.result();
+        () => {
+          alert("✅ Message sent successfully!");
+          form.current.reset();
         },
         (error) => {
-          alert(error);
+          alert("❌ Message failed. Please try again.");
+          console.error(error.text);
         }
       );
   };
+
   return (
-    <Container id="Education">
+    <Container id="Contact">
       <Wrapper>
         <Title>Contact</Title>
-        <Desc
-          style={{
-            marginBottom: "40px",
-          }}
-        >
-          Feel free to reach out to me for any questions or opportunities!
-        </Desc>
-        <ContactForm onSubmit={handelSubmit}>
+        <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
+
+        <ContactForm ref={form} onSubmit={handleSubmit}>
           <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
+          <ContactInput placeholder="Your Email" name="from_email" required />
+          <ContactInput placeholder="Your Name" name="from_name" required />
+          <ContactInput placeholder="Subject" name="subject" required />
+          <ContactInputMessage
+            placeholder="Message"
+            name="message"
+            rows={4}
+            required
+          />
           <ContactButton type="submit" value="Send" />
         </ContactForm>
       </Wrapper>
