@@ -13,3 +13,7 @@ Check out the live site here: [https://smayuraa.github.io/3D-Portfolio/](https:/
 - Responsive design
 - Smooth scrolling and interactive UI
 
+### 3D Model Attribution
+
+“**Stylized Planet**” by **cmzw** is licensed under [**CC BY 4.0**](http://creativecommons.org/licenses/by/4.0/).  
+[Link to model](https://skfb.ly/oyDUw)
